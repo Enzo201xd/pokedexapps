@@ -17,6 +17,12 @@ export const POST: APIRoute = async (context: APIContext) => {
     const newPokemon = await context.request.json()
     addPokemon(newPokemon)
     return new Response(JSON.stringify({}), {
+export const POST: APIRoute = async (context) => {
+  const pokemon = await context.request.json()
+
+  await addPokemon(pokemon)
+
+  return new Response(JSON.stringify(pokemon), {
     headers: {
       'content-type': 'application/json',
       'Access-Control-Allow-Origin': '*',
